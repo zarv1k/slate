@@ -148,6 +148,12 @@ class HoveringMenu extends React.Component {
       rect.width / 2}px`
   }
 
+  schema = {
+    document: {
+      marks: [],
+    },
+  }
+
   /**
    * Render.
    *
@@ -167,6 +173,7 @@ class HoveringMenu extends React.Component {
           value={this.state.value}
           onChange={this.onChange}
           renderMark={this.renderMark}
+          schema={this.schema}
         />
       </div>
     )
