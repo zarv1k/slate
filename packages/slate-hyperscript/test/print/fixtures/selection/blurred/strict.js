@@ -1,27 +1,27 @@
 /** @jsx h */
 
-import h from '../../../h';
+import h from '../../../h'
 
 export const options = {
-    strict: true
-};
+  strict: true,
+}
 
 const input = (
-    <value>
-        <document key="a">
-            <paragraph key="b">
-                <text key="c" />
-            </paragraph>
-            <paragraph key="d">
-                <text key="e">Hello, world!</text>
-            </paragraph>
-        </document>
-        <selection>
-            <anchor key="c" />
-            <focus key="e" offset={1} />
-        </selection>
-    </value>
-);
+  <value>
+    <document key="a">
+      <paragraph key="b">
+        <text key="c" />
+      </paragraph>
+      <paragraph key="d">
+        <text key="e">Hello, world!</text>
+      </paragraph>
+    </document>
+    <selection>
+      <anchor key="c" />
+      <focus key="e" offset={1} />
+    </selection>
+  </value>
+)
 
 const output = `
 <value>
@@ -36,6 +36,6 @@ const output = `
         <focus offset={1} path={[1, 0]} />
     </selection>
 </value>
-`;
+`
 
-export { input, output };
+export { input, output }

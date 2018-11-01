@@ -1,20 +1,20 @@
 /** @jsx h */
 
-import h from '../h';
+import h from '../h'
 
 const input = (
-    <value>
-        <document>
-            <paragraph>
-                <bold>Hello</bold> I am{' '}
-                <bold>
-                    using bold <italic> and italic</italic>
-                </bold>
-                <italic> and just italic</italic>.
-            </paragraph>
-        </document>
-    </value>
-);
+  <value>
+    <document>
+      <paragraph>
+        <bold>Hello</bold> I am{' '}
+        <bold>
+          using bold <italic> and italic</italic>
+        </bold>
+        <italic> and just italic</italic>.
+      </paragraph>
+    </document>
+  </value>
+)
 
 const output = `
 <value>
@@ -28,6 +28,6 @@ const output = `
         </paragraph>
     </document>
 </value>
-`;
+`
 
-export { input, output };
+export { input, output }

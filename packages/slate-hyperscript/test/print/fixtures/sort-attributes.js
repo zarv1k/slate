@@ -1,27 +1,28 @@
 /** @jsx h */
-import { createHyperscript } from 'slate-hyperscript';
-import { defaultHyperscript } from '../h';
+
+import { createHyperscript } from 'slate-hyperscript'
+import { defaultHyperscript } from '../h'
 
 const hyperscript = {
-    ...defaultHyperscript,
-    schema: {}
-};
+  ...defaultHyperscript,
+  schema: {},
+}
 
 const options = {
-    preserveKeys: true,
-    hyperscript
-};
+  preserveKeys: true,
+  hyperscript,
+}
 
-const h = createHyperscript(hyperscript);
+const h = createHyperscript(hyperscript)
 
 const input = (
-    <value>
-        <document>
-            <image data1 data2="2" a="b" key="key1" />
-            <block type="image" key="key2" data={{ src: 'image.png' }} />
-        </document>
-    </value>
-);
+  <value>
+    <document>
+      <image data1 data2="2" a="b" key="key1" />
+      <block type="image" key="key2" data={{ src: 'image.png' }} />
+    </document>
+  </value>
+)
 
 const output = `
 <value>
@@ -34,6 +35,6 @@ const output = `
         </image>
     </document>
 </value>
-`;
+`
 
-export { input, output, options };
+export { input, output, options }

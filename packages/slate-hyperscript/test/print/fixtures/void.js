@@ -1,43 +1,43 @@
 /** @jsx h */
 
-import { createHyperscript } from 'slate-hyperscript';
+import { createHyperscript } from 'slate-hyperscript'
 
 const hyperscript = {
+  blocks: {
+    paragraph: 'paragraph',
+    image: 'Image',
+  },
+  inlines: {
+    link: 'link',
+  },
+  schema: {
     blocks: {
-        paragraph: 'paragraph',
-        image: 'Image'
+      Image: {
+        isVoid: true,
+      },
     },
     inlines: {
-        link: 'link'
+      link: {
+        isVoid: true,
+      },
     },
-    schema: {
-        blocks: {
-            Image: {
-                isVoid: true
-            }
-        },
-        inlines: {
-            link: {
-                isVoid: true
-            }
-        }
-    }
-};
+  },
+}
 
-export const options = { hyperscript };
+export const options = { hyperscript }
 
-const h = createHyperscript(hyperscript);
+const h = createHyperscript(hyperscript)
 
 const input = (
-    <value>
-        <document>
-            <paragraph>
-                <inline type="link" />
-            </paragraph>
-            <block type="image" data={{ src: 'image.png' }} />
-        </document>
-    </value>
-);
+  <value>
+    <document>
+      <paragraph>
+        <inline type="link" />
+      </paragraph>
+      <block type="image" data={{ src: 'image.png' }} />
+    </document>
+  </value>
+)
 
 const output = `
 <value>
@@ -52,6 +52,6 @@ const output = `
         <focus path={[0, 1, 0]} />
     </selection>
 </value>
-`;
+`
 
-export { input, output };
+export { input, output }

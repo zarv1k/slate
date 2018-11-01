@@ -4,14 +4,12 @@
  * @param {Value} value
  * @returns {boolean}
  */
-export const isSelectionAtStartOfDocument = ({
-    selection,
-    document
-}) =>
-    selection.isCollapsed &&
-    selection.anchor.offset === 0 &&
-    selection.focus.offset === 0 &&
-    selection.anchor.isAtStartOfNode(document.getFirstText());
+
+export const isSelectionAtStartOfDocument = ({ selection, document }) =>
+  selection.isCollapsed &&
+  selection.anchor.offset === 0 &&
+  selection.focus.offset === 0 &&
+  selection.anchor.isAtStartOfNode(document.getFirstText())
 
 /**
  * Builds the open part of the selection marker text.
@@ -21,14 +19,15 @@ export const isSelectionAtStartOfDocument = ({
  * @param {string} open
  * @returns {string}
  */
-const selectionOpenMarker = (value, open = '__@') => {
-    const text = value.document.text;
-    const close = [...open].reverse().join('');
 
-    return text.includes(open) || text.includes(close)
-        ? selectionOpenMarker(value, `${open}@`)
-        : open;
-};
+const selectionOpenMarker = (value, open = '__@') => {
+  const text = value.document.text
+  const close = [...open].reverse().join('')
+
+  return text.includes(open) || text.includes(close)
+    ? selectionOpenMarker(value, `${open}@`)
+    : open
+}
 
 /**
  * Insert selection tag markers
@@ -40,47 +39,38 @@ const selectionOpenMarker = (value, open = '__@') => {
  * @param {Object} options
  * @returns {Value}
  */
-export const insertFocusedSelectionTagMarkers = (
-    value,
-    options
-) => {
-    const { selection } = value;
-    const {
-        isExpanded,
-        isBlurred,
-        isUnset,
-        isForward,
-        anchor,
-        marks
-    } = selection;
 
-    if (isUnset || isBlurred || (marks && marks.size)) {
-        return value;
-    }
+export const insertFocusedSelectionTagMarkers = (value, options) => {
+  const { selection } = value
+  const { isExpanded, isBlurred, isUnset, isForward, anchor, marks } = selection
 
-    const open = selectionOpenMarker(value);
-    const close = [...open].reverse().join('');
+  if (isUnset || isBlurred || (marks && marks.size)) {
+    return value
+  }
 
-    let tags = ['cursor'];
+  const open = selectionOpenMarker(value)
+  const close = [...open].reverse().join('')
 
-    if (isExpanded) {
-        tags = isForward ? ['focus', 'anchor'] : ['anchor', 'focus'];
-    }
+  let tags = ['cursor']
 
-    const change = value.change();
+  if (isExpanded) {
+    tags = isForward ? ['focus', 'anchor'] : ['anchor', 'focus']
+  }
 
-    change.call(ch =>
-        tags.forEach(tag => {
-            const { path, offset } = selection[tag] || anchor;
-            ch.insertTextByPath(path, offset, `${open}${tag}${close}`);
-        })
-    );
+  const change = value.change()
 
-    // selectionMarker in options saved only for internal usage
-    (options).selectionMarker = open;
+  change.call(ch =>
+    tags.forEach(tag => {
+      const { path, offset } = selection[tag] || anchor
+      ch.insertTextByPath(path, offset, `${open}${tag}${close}`)
+    })
+  )
 
-    return change.value;
-};
+  // selectionMarker in options saved only for internal usage
+  options.selectionMarker = open
+
+  return change.value
+}
 
 /**
  * Prints focused selection tags with escaping texts around them
@@ -90,27 +80,22 @@ export const insertFocusedSelectionTagMarkers = (
  * @param {Function} escape
  * @returns {string}
  */
-export const printFocusedSelection = (
-    s,
-    marker,
-    escape: Function
-) => {
-    const open = marker;
-    const close = marker
-        .split('')
-        .reverse()
-        .join('');
 
-    const selection = new RegExp(`${open}(focus|anchor|cursor)${close}`);
-    const splitter = new RegExp(`(${open}(?:focus|anchor|cursor)${close})`);
+export const printFocusedSelection = (s, marker, escape: Function) => {
+  const open = marker
+  const close = marker
+    .split('')
+    .reverse()
+    .join('')
 
-    return s
-        .split(splitter)
-        .map(
-            text =>
-                selection.test(text)
-                    ? text.replace(selection, '<$1 />')
-                    : escape(text)
-        )
-        .join('');
-};
+  const selection = new RegExp(`${open}(focus|anchor|cursor)${close}`)
+  const splitter = new RegExp(`(${open}(?:focus|anchor|cursor)${close})`)
+
+  return s
+    .split(splitter)
+    .map(
+      text =>
+        selection.test(text) ? text.replace(selection, '<$1 />') : escape(text)
+    )
+    .join('')
+}

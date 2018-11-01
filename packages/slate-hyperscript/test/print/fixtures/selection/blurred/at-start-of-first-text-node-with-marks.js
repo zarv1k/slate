@@ -1,18 +1,16 @@
 /** @jsx h */
 
-import h from '../../../h';
+import h from '../../../h'
 
 const input = (
-    <value>
-        <document>
-            <paragraph />
-            <paragraph>
-                Hello, world!
-            </paragraph>
-        </document>
-        <selection marks={[{ type: 'bold' }]} />
-    </value>
-);
+  <value>
+    <document>
+      <paragraph />
+      <paragraph>Hello, world!</paragraph>
+    </document>
+    <selection marks={[{ type: 'bold' }]} />
+  </value>
+)
 
 const output = `
 <value>
@@ -22,6 +20,6 @@ const output = `
     </document>
     <selection marks={[{ type: 'bold' }]} />
 </value>
-`;
+`
 
-export { input, output };
+export { input, output }

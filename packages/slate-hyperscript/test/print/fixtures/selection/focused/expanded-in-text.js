@@ -1,21 +1,19 @@
 /** @jsx h */
 
-import h from '../../../h';
+import h from '../../../h'
 
 const input = (
-    <value>
-        <document>
-            <paragraph />
-            <paragraph>
-                Hello, world!
-            </paragraph>
-        </document>
-        <selection focused>
-            <anchor path={[0, 0]} />
-            <focus offset={1} path={[1, 0]} />
-        </selection>
-    </value>
-);
+  <value>
+    <document>
+      <paragraph />
+      <paragraph>Hello, world!</paragraph>
+    </document>
+    <selection focused>
+      <anchor path={[0, 0]} />
+      <focus offset={1} path={[1, 0]} />
+    </selection>
+  </value>
+)
 
 const output = `
 <value>
@@ -28,6 +26,6 @@ const output = `
         </paragraph>
     </document>
 </value>
-`;
+`
 
-export { input, output };
+export { input, output }

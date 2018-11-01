@@ -1,16 +1,16 @@
 /** @jsx h */
 
-import h from '../h';
+import h from '../h'
 
-const space = ' ';
+const space = ' '
 const input = (
-    <value>
-        <document>
-            <paragraph />
-            <paragraph>{space}</paragraph>
-        </document>
-    </value>
-);
+  <value>
+    <document>
+      <paragraph />
+      <paragraph>{space}</paragraph>
+    </document>
+  </value>
+)
 
 const output = `
 <value>
@@ -19,6 +19,6 @@ const output = `
         <paragraph> </paragraph>
     </document>
 </value>
-`;
+`
 
-export { input, output };
+export { input, output }

@@ -1,26 +1,30 @@
 /** @jsx h */
 
-import h from '../../../h';
+import h from '../../../h'
 
 const input = (
-    <value>
-        <document>
-            <paragraph>Should not escape <anchor />simple text.</paragraph>
-            <paragraph>Should escape ' p<focus />roperly</paragraph>
-            <paragraph>{'Should escape <, >, {, } properly'}</paragraph>
-            <paragraph>{"Should escape \\'"}</paragraph>
-            <paragraph> </paragraph>
-            <paragraph should={'{"escape attributes"}'} />
-            <paragraph
-                should={{ escape: {}, object: ['etc.'], always: new Date(0) }}
-            />
-            <paragraph>
-                <bold>{"Should escape'em \n\nline breaks."}</bold>
-                {'\n'}
-            </paragraph>
-        </document>
-    </value>
-);
+  <value>
+    <document>
+      <paragraph>
+        Should not escape <anchor />simple text.
+      </paragraph>
+      <paragraph>
+        Should escape ' p<focus />roperly
+      </paragraph>
+      <paragraph>{'Should escape <, >, {, } properly'}</paragraph>
+      <paragraph>{"Should escape \\'"}</paragraph>
+      <paragraph />
+      <paragraph should={'{"escape attributes"}'} />
+      <paragraph
+        should={{ escape: {}, object: ['etc.'], always: new Date(0) }}
+      />
+      <paragraph>
+        <bold>{"Should escape'em \n\nline breaks."}</bold>
+        {'\n'}
+      </paragraph>
+    </document>
+  </value>
+)
 
 const output = `
 <value>
@@ -49,6 +53,6 @@ const output = `
         </paragraph>
     </document>
 </value>
-`;
+`
 
-export { input, output };
+export { input, output }

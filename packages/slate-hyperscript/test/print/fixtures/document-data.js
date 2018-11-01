@@ -1,14 +1,14 @@
 /** @jsx h */
 
-import h from '../h';
+import h from '../h'
 
 const input = (
-    <value>
-        <document data={{ key: 'value' }}>
-            <paragraph>Hello</paragraph>
-        </document>
-    </value>
-);
+  <value>
+    <document data={{ key: 'value' }}>
+      <paragraph>Hello</paragraph>
+    </document>
+  </value>
+)
 
 const output = `
 <value>
@@ -16,6 +16,6 @@ const output = `
         <paragraph>Hello</paragraph>
     </document>
 </value>
-`;
+`
 
-export { input, output };
+export { input, output }

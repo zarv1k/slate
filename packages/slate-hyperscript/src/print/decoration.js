@@ -4,8 +4,9 @@
  * @param {Mark} mark
  * @returns {boolean}
  */
-export const isDecorationMark = (mark) =>
-    mark.object === 'mark' && /__@.+@__/.test(mark.type);
+
+export const isDecorationMark = mark =>
+  mark.object === 'mark' && /__@.+@__/.test(mark.type)
 
 /**
  * Returns model type
@@ -13,10 +14,9 @@ export const isDecorationMark = (mark) =>
  * @param {SlateModel} model
  * @returns {string}
  */
-export const getModelType = (model) =>
-    isDecorationMark(model)
-        ? model.type.replace(/__@(.+)@__/, '$1')
-        : model.type;
+
+export const getModelType = model =>
+  isDecorationMark(model) ? model.type.replace(/__@(.+)@__/, '$1') : model.type
 
 /**
  * Applies decoration marks
@@ -26,17 +26,19 @@ export const getModelType = (model) =>
  * @param {Value} value
  * @returns {Value}
  */
-export const applyDecorationMarks = (value) => {
-    const change = value.change();
-    value.decorations.forEach((decoration) => {
-        change.addMarkAtRange(
-            decoration,
-            {
-                ...decoration.mark.toJSON(),
-                type: `__@${decoration.mark.type}@__`
-            },
-            { normalize: false }
-        );
-    });
-    return change.value;
-};
+
+export const applyDecorationMarks = value => {
+  const change = value.change()
+
+  value.decorations.forEach(decoration => {
+    change.addMarkAtRange(
+      decoration,
+      {
+        ...decoration.mark.toJSON(),
+        type: `__@${decoration.mark.type}@__`,
+      },
+      { normalize: false }
+    )
+  })
+  return change.value
+}

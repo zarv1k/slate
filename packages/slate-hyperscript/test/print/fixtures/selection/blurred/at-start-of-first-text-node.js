@@ -1,16 +1,14 @@
 /** @jsx h */
 
-import h from '../../../h';
+import h from '../../../h'
 
 const input = (
-    <value>
-        <document>
-            <paragraph>
-                Hello, world!
-            </paragraph>
-        </document>
-    </value>
-);
+  <value>
+    <document>
+      <paragraph>Hello, world!</paragraph>
+    </document>
+  </value>
+)
 
 const output = `
 <value>
@@ -18,6 +16,6 @@ const output = `
         <paragraph>Hello, world!</paragraph>
     </document>
 </value>
-`;
+`
 
-export { input, output };
+export { input, output }

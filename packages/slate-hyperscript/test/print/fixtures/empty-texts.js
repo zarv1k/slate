@@ -1,26 +1,26 @@
 /** @jsx h */
 
-import h from '../h';
+import h from '../h'
 
 const options = {
-    strict: true
-};
+  strict: true,
+}
 
-const space = ' ';
+const space = ' '
 const input = (
-    <value>
-        <document>
-            <paragraph />
-            <paragraph>{space}</paragraph>
-            <paragraph>
-                <text />
-            </paragraph>
-            <paragraph>
-                <link>inlines are surrounded by empty texts</link>
-            </paragraph>
-        </document>
-    </value>
-);
+  <value>
+    <document>
+      <paragraph />
+      <paragraph>{space}</paragraph>
+      <paragraph>
+        <text />
+      </paragraph>
+      <paragraph>
+        <link>inlines are surrounded by empty texts</link>
+      </paragraph>
+    </document>
+  </value>
+)
 
 const output = `
 <value>
@@ -39,6 +39,6 @@ const output = `
         </paragraph>
     </document>
 </value>
-`;
+`
 
-export { input, output, options };
+export { input, output, options }
