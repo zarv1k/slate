@@ -1,4 +1,3 @@
-// @flow
 import isPlainObject from 'is-plain-object';
 import printComplexDataStructure from './printComplexDataStructure';
 

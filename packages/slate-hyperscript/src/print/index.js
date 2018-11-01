@@ -1,10 +1,7 @@
-/* @flow */
-
 import prettier from 'prettier/standalone';
 import babylon from 'prettier/parser-babylon';
 
 import parse from './parse';
-import type { SlateModel, Options } from './types';
 
 const DEFAULT_OPTIONS: Options = {
     preserveKeys: false,

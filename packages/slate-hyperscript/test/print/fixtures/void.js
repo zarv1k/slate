@@ -1,10 +1,8 @@
-/** @flow */
 /** @jsx h */
 
 import { createHyperscript } from 'slate-hyperscript';
-import type { HyperScriptOptions } from '../../src/types';
 
-const hyperscript: HyperScriptOptions = {
+const hyperscript = {
     blocks: {
         paragraph: 'paragraph',
         image: 'Image'

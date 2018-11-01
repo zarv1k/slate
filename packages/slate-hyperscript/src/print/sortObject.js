@@ -1,5 +1,3 @@
-/* @flow */
-
 /*
  * Returns a copy of the input value, with all objects keys sorted
  */

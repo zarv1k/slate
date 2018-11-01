@@ -1,7 +1,3 @@
-// @flow
-import type { Value } from 'slate';
-import type { Options } from './types';
-
 /**
  * Checks is selection at initial position: it is collapsed and is before the first character of the first text node
  *

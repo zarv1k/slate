@@ -1,4 +1,3 @@
-/* @flow */
 import stringify from 'stringify-object';
 import sortObject from './sortObject';
 

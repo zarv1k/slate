@@ -1,4 +1,3 @@
-// @flow
 import { type Options } from './types';
 import printAttribute from './attributes';
 

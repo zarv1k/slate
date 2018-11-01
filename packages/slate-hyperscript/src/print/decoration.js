@@ -1,7 +1,3 @@
-// @flow
-import type { Value, Decoration, Mark } from 'slate';
-import type { SlateModel } from './types';
-
 /**
  * Checks is mark type is decoration in real
  *

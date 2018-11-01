@@ -1,6 +1,3 @@
-// @flow
-import type { Block, Inline } from 'slate';
-import type { SlateModel, Options, HyperScriptOptions } from './types';
 import Tag from './tag';
 import { printString } from './utils';
 import {

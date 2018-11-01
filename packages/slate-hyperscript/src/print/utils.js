@@ -1,6 +1,3 @@
-// @flow
-
-import type { Options } from './types';
 import { printFocusedSelection } from './selection';
 
 const charsToEscape = ['<', '>', '{', '}', "'", '"', '\n'];
