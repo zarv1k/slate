@@ -1,7 +1,7 @@
 /*
  * Returns a copy of the input value, with all objects keys sorted
  */
-export default function sortObject(value: any): any {
+export default function sortObject(value) {
     // return non-object value as is
     if (value === null || typeof value !== 'object') {
         return value;

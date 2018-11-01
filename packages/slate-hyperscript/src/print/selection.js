@@ -1,13 +1,13 @@
 /**
  * Checks is selection at initial position: it is collapsed and is before the first character of the first text node
  *
- * @param value
+ * @param {Value} value
  * @returns {boolean}
  */
 export const isSelectionAtStartOfDocument = ({
     selection,
     document
-}: Value): boolean =>
+}) =>
     selection.isCollapsed &&
     selection.anchor.offset === 0 &&
     selection.focus.offset === 0 &&
@@ -21,8 +21,8 @@ export const isSelectionAtStartOfDocument = ({
  * @param {string} open
  * @returns {string}
  */
-const selectionOpenMarker = (value: Value, open: string = '__@'): string => {
-    const text: string = value.document.text;
+const selectionOpenMarker = (value, open = '__@') => {
+    const text = value.document.text;
     const close = [...open].reverse().join('');
 
     return text.includes(open) || text.includes(close)
@@ -37,13 +37,13 @@ const selectionOpenMarker = (value: Value, open: string = '__@'): string => {
  * This function inserts special text strings that will be replaced by focused selection tags while printing the document.
  * It also saves selection marker open tag into the options for replacement while printing leaf nodes.
  * @param {Value} value
- * @param {Options} options
+ * @param {Object} options
  * @returns {Value}
  */
 export const insertFocusedSelectionTagMarkers = (
-    value: Value,
-    options: Options
-): Value => {
+    value,
+    options
+) => {
     const { selection } = value;
     const {
         isExpanded,
@@ -77,7 +77,7 @@ export const insertFocusedSelectionTagMarkers = (
     );
 
     // selectionMarker in options saved only for internal usage
-    (options: any).selectionMarker = open;
+    (options).selectionMarker = open;
 
     return change.value;
 };
@@ -91,10 +91,10 @@ export const insertFocusedSelectionTagMarkers = (
  * @returns {string}
  */
 export const printFocusedSelection = (
-    s: string,
-    marker: string,
+    s,
+    marker,
     escape: Function
-): string => {
+) => {
     const open = marker;
     const close = marker
         .split('')

@@ -106,7 +106,7 @@ const PARSERS = {
             ],
             [
                 {
-                    print: (o: Options) => printString(leaf.text, o)
+                    print: (o) => printString(leaf.text, o)
                 }
             ]
         ),
@@ -159,12 +159,12 @@ const PARSERS = {
  * Returns attributes (with or without key)
  */
 function getAttributes(
-    model: SlateModel,
-    options: Options,
+    model,
+    options,
     // True to spread the data as attributes.
     // False to keep it under `data` and to make `type` explicit
-    asShorthand: boolean = true
-): Object {
+    asShorthand = true
+) {
     let result = {};
 
     // type
@@ -195,7 +195,7 @@ function getAttributes(
 /*
  * Parse a Slate model to a Tag representation
  */
-function parse(model: SlateModel, options: Options): Tag[] {
+function parse(model, options) {
     const object = model.object;
     const parser = PARSERS[object];
     if (!parser) {
@@ -218,7 +218,7 @@ function parse(model: SlateModel, options: Options): Tag[] {
  * True if the model can be print using the shorthand syntax 
  * (data spread into attributes)
  */
-function canPrintAsShorthand(model: SlateModel): boolean {
+function canPrintAsShorthand(model) {
     const validAttributeKey = key => /^[a-zA-Z]/.test(key);
 
     return model.data.every((value, key) => validAttributeKey(key));
@@ -230,7 +230,7 @@ function canPrintAsShorthand(model: SlateModel): boolean {
  * @param {Options} options
  * @returns {boolean}
  */
-function isVoid(model: Block | Inline, options: Options): boolean {
+function isVoid(model, options) {
     if (!options.hyperscript) {
         return false;
     }
@@ -248,7 +248,7 @@ function isVoid(model: Block | Inline, options: Options): boolean {
     return isVoidNode;
 }
 
-function getTagName(model: SlateModel, options: Options): string {
+function getTagName(model, options) {
     const tagName = getHyperscriptTag(model, options.hyperscript);
 
     return canPrintAsShorthand(model) ? tagName : model.object;
@@ -257,13 +257,13 @@ function getTagName(model: SlateModel, options: Options): string {
 /**
  * Returns hyperscript tag according to createHyperscript() factory options
  * @param {SlateModel} model
- * @param {HyperscriptOptions} hyperscript
+ * @param {Object | undefined} hyperscript
  * @returns {string}
  */
 function getHyperscriptTag(
-    model: SlateModel,
-    hyperscript?: HyperScriptOptions
-): string {
+    model,
+    hyperscript
+) {
     const modelType = getModelType(model);
 
     const objects = `${model.object}s`;

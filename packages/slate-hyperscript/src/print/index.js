@@ -3,7 +3,7 @@ import babylon from 'prettier/parser-babylon';
 
 import parse from './parse';
 
-const DEFAULT_OPTIONS: Options = {
+const DEFAULT_OPTIONS = {
     preserveKeys: false,
     strict: false,
     prettier: {
@@ -14,8 +14,8 @@ const DEFAULT_OPTIONS: Options = {
 };
 
 function hyperprint(
-    model: SlateModel,
-    optionsParam?: Options = DEFAULT_OPTIONS
+    model,
+    optionsParam = DEFAULT_OPTIONS
 ) {
     if (!model) {
         throw new Error('slate-hyperprint: Expected a Slate model');
@@ -42,7 +42,7 @@ function hyperprint(
 }
 
 // Directly print to the console
-hyperprint.log = (model: SlateModel, optionsParam?: Options) =>
+hyperprint.log = (model, optionsParam) =>
     // eslint-disable-next-line no-console
     console.log(hyperprint(model, optionsParam));
 

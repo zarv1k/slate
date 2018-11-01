@@ -2,11 +2,11 @@ import { printFocusedSelection } from './selection';
 
 const charsToEscape = ['<', '>', '{', '}', "'", '"', '\n'];
 
-function shouldBeEscaped(s: string): boolean {
+function shouldBeEscaped(s) {
     return charsToEscape.some(char => s.includes(char));
 }
 
-function preserveTrailingSpace(s: string): string {
+function preserveTrailingSpace(s) {
     let result = s;
     if (result === '') {
         return result;
@@ -26,7 +26,7 @@ function preserveTrailingSpace(s: string): string {
     return result;
 }
 
-function escape(s: string): string {
+function escape(s) {
     if (!shouldBeEscaped(s)) {
         return s;
     }
@@ -37,8 +37,8 @@ function escape(s: string): string {
         .replace(/\n/g, '\\n')}'}`;
 }
 
-function printString(s: string, options: Options) {
-    const selectionMarker: string = (options: any).selectionMarker;
+function printString(s, options) {
+    const selectionMarker = (options).selectionMarker;
     s = selectionMarker
         ? printFocusedSelection(s, selectionMarker, escape)
         : escape(s);

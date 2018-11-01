@@ -5,7 +5,7 @@ import sortObject from './sortObject';
 
 function noRefCheck() {}
 
-function printComplexDataStructure(value: Object | Array<any>): string {
+function printComplexDataStructure(value) {
     // Sort keys for output stability
     const normalizedValue = sortObject(value);
 

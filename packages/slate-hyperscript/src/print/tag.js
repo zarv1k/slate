@@ -5,17 +5,8 @@ import printAttribute from './attributes';
  * Represents a printable JSX tag
  */
 class Tag {
-    name: string;
-    children: Tag[];
-    attributes: Object;
 
-    constructor(
-        args: {
-            name?: string,
-            children?: Tag[],
-            attributes?: Object
-        } = {}
-    ): Tag {
+    constructor(args = {}) {
         const { name, children, attributes } = args;
 
         this.name = name || '';
@@ -30,7 +21,7 @@ class Tag {
     }
 
     // Print this tag
-    print(options: Options): string {
+    print(options) {
         const { name, children, attributes } = this;
 
         const stringifiedAttrs = Object.keys(attributes)

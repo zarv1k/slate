@@ -4,7 +4,7 @@
  * @param {Mark} mark
  * @returns {boolean}
  */
-export const isDecorationMark = (mark: Mark): boolean =>
+export const isDecorationMark = (mark) =>
     mark.object === 'mark' && /__@.+@__/.test(mark.type);
 
 /**
@@ -13,7 +13,7 @@ export const isDecorationMark = (mark: Mark): boolean =>
  * @param {SlateModel} model
  * @returns {string}
  */
-export const getModelType = (model: SlateModel): string =>
+export const getModelType = (model) =>
     isDecorationMark(model)
         ? model.type.replace(/__@(.+)@__/, '$1')
         : model.type;
@@ -26,9 +26,9 @@ export const getModelType = (model: SlateModel): string =>
  * @param {Value} value
  * @returns {Value}
  */
-export const applyDecorationMarks = (value: Value): Value => {
+export const applyDecorationMarks = (value) => {
     const change = value.change();
-    value.decorations.forEach((decoration: Decoration) => {
+    value.decorations.forEach((decoration) => {
         change.addMarkAtRange(
             decoration,
             {
