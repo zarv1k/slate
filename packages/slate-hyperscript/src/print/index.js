@@ -9,7 +9,7 @@ const DEFAULT_OPTIONS = {
   prettier: {
     semi: false,
     singleQuote: true,
-    tabWidth: 4,
+    tabWidth: 2,
   },
 }
 

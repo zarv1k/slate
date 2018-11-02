@@ -17,14 +17,14 @@ const input = (
 
 const output = `
 <value>
-    <document>
-        <paragraph>
-            __@anchor@__<anchor />__@@focus@@__
-        </paragraph>
-        <paragraph>
-            Hel<focus />lo, __@@@anchor@@@__ world!
-        </paragraph>
-    </document>
+  <document>
+    <paragraph>
+      __@anchor@__<anchor />__@@focus@@__
+    </paragraph>
+    <paragraph>
+      Hel<focus />lo, __@@@anchor@@@__ world!
+    </paragraph>
+  </document>
 </value>
 `
 

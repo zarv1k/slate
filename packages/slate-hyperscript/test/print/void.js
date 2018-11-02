@@ -41,16 +41,16 @@ const input = (
 
 const output = `
 <value>
-    <document>
-        <paragraph>
-            <link />
-        </paragraph>
-        <image src="image.png" />
-    </document>
-    <selection>
-        <anchor path={[0, 1, 0]} />
-        <focus path={[0, 1, 0]} />
-    </selection>
+  <document>
+    <paragraph>
+      <link />
+    </paragraph>
+    <image src="image.png" />
+  </document>
+  <selection>
+    <anchor path={[0, 1, 0]} />
+    <focus path={[0, 1, 0]} />
+  </selection>
 </value>
 `
 

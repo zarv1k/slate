@@ -24,20 +24,20 @@ const input = (
 
 const output = `
 <value>
-    <document>
-        <paragraph>
-            <text />
-        </paragraph>
-        <paragraph> </paragraph>
-        <paragraph>
-            <text />
-        </paragraph>
-        <paragraph>
-            <text />
-            <link>inlines are surrounded by empty texts</link>
-            <text />
-        </paragraph>
-    </document>
+  <document>
+    <paragraph>
+      <text />
+    </paragraph>
+    <paragraph> </paragraph>
+    <paragraph>
+      <text />
+    </paragraph>
+    <paragraph>
+      <text />
+      <link>inlines are surrounded by empty texts</link>
+      <text />
+    </paragraph>
+  </document>
 </value>
 `
 

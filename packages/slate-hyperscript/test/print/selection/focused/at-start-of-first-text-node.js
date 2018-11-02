@@ -14,11 +14,11 @@ const input = (
 
 const output = `
 <value>
-    <document>
-        <paragraph>
-            <cursor />Hello, world!
-        </paragraph>
-    </document>
+  <document>
+    <paragraph>
+      <cursor />Hello, world!
+    </paragraph>
+  </document>
 </value>
 `
 

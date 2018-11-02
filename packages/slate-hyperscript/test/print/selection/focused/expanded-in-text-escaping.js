@@ -30,30 +30,30 @@ const input = (
 
 const output = `
 <value>
-    <document>
-        <paragraph>
-            Should not escape <anchor />simple text.
-        </paragraph>
-        <paragraph>
-            {"Should escape ' p"}
-            <focus />roperly
-        </paragraph>
-        <paragraph>{'Should escape <, >, {, } properly'}</paragraph>
-        <paragraph>{"Should escape \\\\'"}</paragraph>
-        <paragraph> </paragraph>
-        <paragraph should="{&quot;escape attributes&quot;}" />
-        <paragraph
-            should={{
-                always: new Date('1970-01-01T00:00:00.000Z'),
-                escape: {},
-                object: ['etc.']
-            }}
-        />
-        <paragraph>
-            <bold>{"Should escape'em \\n\\nline breaks."}</bold>
-            {'\\n'}
-        </paragraph>
-    </document>
+  <document>
+    <paragraph>
+      Should not escape <anchor />simple text.
+    </paragraph>
+    <paragraph>
+      {"Should escape ' p"}
+      <focus />roperly
+    </paragraph>
+    <paragraph>{'Should escape <, >, {, } properly'}</paragraph>
+    <paragraph>{"Should escape \\\\'"}</paragraph>
+    <paragraph> </paragraph>
+    <paragraph should="{&quot;escape attributes&quot;}" />
+    <paragraph
+      should={{
+        always: new Date('1970-01-01T00:00:00.000Z'),
+        escape: {},
+        object: ['etc.']
+      }}
+    />
+    <paragraph>
+      <bold>{"Should escape'em \\n\\nline breaks."}</bold>
+      {'\\n'}
+    </paragraph>
+  </document>
 </value>
 `
 

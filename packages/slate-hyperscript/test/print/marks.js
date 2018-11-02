@@ -18,15 +18,15 @@ const input = (
 
 const output = `
 <value>
-    <document>
-        <paragraph>
-            <bold>Hello</bold> I am <bold>using bold </bold>
-            <bold>
-                <italic> and italic</italic>
-            </bold>
-            <italic> and just italic</italic>.
-        </paragraph>
-    </document>
+  <document>
+    <paragraph>
+      <bold>Hello</bold> I am <bold>using bold </bold>
+      <bold>
+        <italic> and italic</italic>
+      </bold>
+      <italic> and just italic</italic>.
+    </paragraph>
+  </document>
 </value>
 `
 

@@ -14,10 +14,10 @@ const input = (
 
 const output = `
 <value>
-    <document>
-        <paragraph />
-        <paragraph> </paragraph>
-    </document>
+  <document>
+    <paragraph />
+    <paragraph> </paragraph>
+  </document>
 </value>
 `
 

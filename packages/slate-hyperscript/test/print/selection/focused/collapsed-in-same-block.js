@@ -16,12 +16,12 @@ const input = (
 
 const output = `
 <value>
-    <document>
-        <paragraph />
-        <paragraph>
-            H<cursor />ello, world!
-        </paragraph>
-    </document>
+  <document>
+    <paragraph />
+    <paragraph>
+      H<cursor />ello, world!
+    </paragraph>
+  </document>
 </value>
 `
 

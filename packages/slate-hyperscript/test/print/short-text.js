@@ -12,9 +12,9 @@ const input = (
 
 const output = `
 <value>
-    <document>
-        <paragraph>Short text.</paragraph>
-    </document>
+  <document>
+    <paragraph>Short text.</paragraph>
+  </document>
 </value>
 `
 

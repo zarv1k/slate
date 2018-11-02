@@ -12,9 +12,9 @@ const input = (
 
 const output = `
 <value>
-    <document data={{ key: 'value' }}>
-        <paragraph>Hello</paragraph>
-    </document>
+  <document data={{ key: 'value' }}>
+    <paragraph>Hello</paragraph>
+  </document>
 </value>
 `
 

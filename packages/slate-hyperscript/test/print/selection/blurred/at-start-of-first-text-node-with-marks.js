@@ -14,11 +14,11 @@ const input = (
 
 const output = `
 <value>
-    <document>
-        <paragraph />
-        <paragraph>Hello, world!</paragraph>
-    </document>
-    <selection marks={[{ type: 'bold' }]} />
+  <document>
+    <paragraph />
+    <paragraph>Hello, world!</paragraph>
+  </document>
+  <selection marks={[{ type: 'bold' }]} />
 </value>
 `
 

@@ -26,14 +26,14 @@ const input = (
 
 const output = `
 <value>
-    <document key="4">
-        <image a="b" data1 data2="2" key="key1">
-            <text key="0" />
-        </image>
-        <image key="key2" src="image.png">
-            <text key="1" />
-        </image>
-    </document>
+  <document key="4">
+    <image a="b" data1 data2="2" key="key1">
+      <text key="0" />
+    </image>
+    <image key="key2" src="image.png">
+      <text key="1" />
+    </image>
+  </document>
 </value>
 `
 

@@ -28,22 +28,22 @@ const input = (
 
 const output = `
 <value>
-    <document key="a">
-        <paragraph key="b">
-            <text key="6" />
-            <link key="c" src="source">
-                <text key="g">Some link</text>
-            </link>
-            <text key="d">
-                Hello <bold>there</bold>
-            </text>
-        </paragraph>
-        <image key="e" src="image.png" />
-    </document>
-    <selection>
-        <anchor key="g" />
-        <focus key="g" />
-    </selection>
+  <document key="a">
+    <paragraph key="b">
+      <text key="6" />
+      <link key="c" src="source">
+        <text key="g">Some link</text>
+      </link>
+      <text key="d">
+        Hello <bold>there</bold>
+      </text>
+    </paragraph>
+    <image key="e" src="image.png" />
+  </document>
+  <selection>
+    <anchor key="g" />
+    <focus key="g" />
+  </selection>
 </value>
 `
 

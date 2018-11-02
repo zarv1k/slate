@@ -12,9 +12,9 @@ const input = (
 
 const output = `
 <value>
-    <document>
-        <block data={{ '0': 'foo' }} type="image" />
-    </document>
+  <document>
+    <block data={{ '0': 'foo' }} type="image" />
+  </document>
 </value>
 `
 

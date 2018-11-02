@@ -15,12 +15,12 @@ const input = (
 
 const output = `
 <value>
-    <document>
-        <paragraph />
-        <paragraph>
-            Hel<cursor />lo, world!
-        </paragraph>
-    </document>
+  <document>
+    <paragraph />
+    <paragraph>
+      Hel<cursor />lo, world!
+    </paragraph>
+  </document>
 </value>
 `
 

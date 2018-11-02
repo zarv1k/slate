@@ -22,17 +22,17 @@ const input = (
 
 const output = `
 <value>
-    <document>
-        <paragraph>
-            <text />
-        </paragraph>
-        <paragraph>
-            <anchor />
-        </paragraph>
-        <paragraph>
-            H<focus />ello, world!
-        </paragraph>
-    </document>
+  <document>
+    <paragraph>
+      <text />
+    </paragraph>
+    <paragraph>
+      <anchor />
+    </paragraph>
+    <paragraph>
+      H<focus />ello, world!
+    </paragraph>
+  </document>
 </value>
 `
 

@@ -25,18 +25,18 @@ const input = (
 
 const output = `
 <value>
-    <document key="a">
-        <paragraph key="b">
-            <text key="c">
-                <anchor />
-            </text>
-        </paragraph>
-        <paragraph key="d">
-            <text key="e">
-                H<focus />ello, world!
-            </text>
-        </paragraph>
-    </document>
+  <document key="a">
+    <paragraph key="b">
+      <text key="c">
+        <anchor />
+      </text>
+    </paragraph>
+    <paragraph key="d">
+      <text key="e">
+        H<focus />ello, world!
+      </text>
+    </paragraph>
+  </document>
 </value>
 `
 

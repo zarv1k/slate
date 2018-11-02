@@ -15,12 +15,12 @@ const input = (
 
 const output = `
 <value>
-    <document>
-        <paragraph>
-            __@cursor@__<cursor />__@@cursor@@__
-        </paragraph>
-        <paragraph>Hello, __@@@cursor@@@__ world!</paragraph>
-    </document>
+  <document>
+    <paragraph>
+      __@cursor@__<cursor />__@@cursor@@__
+    </paragraph>
+    <paragraph>Hello, __@@@cursor@@@__ world!</paragraph>
+  </document>
 </value>
 `
 
