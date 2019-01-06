@@ -81,7 +81,7 @@ export const insertFocusedSelectionTagMarkers = (value, options) => {
  * @returns {string}
  */
 
-export const printFocusedSelection = (s, marker, escape: Function) => {
+export const printFocusedSelection = (s, marker, escape) => {
   const open = marker
   const close = marker
     .split('')
