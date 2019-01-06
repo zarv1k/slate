@@ -8,9 +8,9 @@ export const schema = {
       data: {
         thing: v => v == 'value',
       },
-      normalize: (change, { code, node, key }) => {
+      normalize: (editor, { code, node, key }) => {
         if (code == 'node_data_invalid') {
-          change.setNodeByKey(node.key, { data: { thing: 'value' } })
+          editor.setNodeByKey(node.key, { data: { thing: 'value' } })
         }
       },
     },
@@ -20,7 +20,9 @@ export const schema = {
 export const input = (
   <value>
     <document>
-      <paragraph />
+      <paragraph>
+        <text />
+      </paragraph>
     </document>
   </value>
 )
@@ -28,7 +30,9 @@ export const input = (
 export const output = (
   <value>
     <document>
-      <paragraph thing="value" />
+      <paragraph thing="value">
+        <text />
+      </paragraph>
     </document>
   </value>
 )

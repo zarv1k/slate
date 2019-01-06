@@ -2,7 +2,7 @@ import Debug from 'debug'
 import ImmutableTypes from 'react-immutable-proptypes'
 import React from 'react'
 import SlateTypes from 'slate-prop-types'
-import warning from 'slate-dev-warning'
+import warning from 'tiny-warning'
 import Types from 'prop-types'
 
 import Void from './void'
@@ -64,8 +64,8 @@ class Node extends React.Component {
 
   shouldComponentUpdate(nextProps) {
     const { props } = this
-    const { stack } = props.editor
-    const shouldUpdate = stack.find(
+    const { editor } = props
+    const shouldUpdate = editor.run(
       'shouldNodeComponentUpdate',
       props,
       nextProps
@@ -130,13 +130,11 @@ class Node extends React.Component {
       readOnly,
     } = this.props
     const { value } = editor
-    const { selection, schema } = value
-    const { stack } = editor
+    const { selection } = value
     const indexes = node.getSelectionIndexes(selection, isSelected)
-    const decs = decorations.concat(node.getDecorations(stack))
+    const decs = decorations.concat(node.getDecorations(editor))
     const childrenDecorations = getChildrenDecorations(node, decs)
-
-    let children = []
+    const children = []
 
     node.nodes.forEach((child, i) => {
       const isChildSelected = !!indexes && indexes.start <= i && i < indexes.end
@@ -152,7 +150,7 @@ class Node extends React.Component {
 
     // If it's a block node with inline children, add the proper `dir` attribute
     // for text direction.
-    if (node.object == 'block' && node.nodes.first().object != 'block') {
+    if (node.isLeafBlock()) {
       const direction = node.getTextDirection()
       if (direction == 'rtl') attributes.dir = 'rtl'
     }
@@ -167,23 +165,13 @@ class Node extends React.Component {
       readOnly,
     }
 
-    let placeholder = stack.find('renderPlaceholder', props)
-
-    if (placeholder) {
-      placeholder = React.cloneElement(placeholder, {
-        key: `${node.key}-placeholder`,
-      })
-
-      children = [placeholder, ...children]
-    }
-
-    const element = stack.find('renderNode', {
+    const element = editor.run('renderNode', {
       ...props,
       attributes,
       children,
     })
 
-    return schema.isVoid(node) ? (
+    return editor.query('isVoid', node) ? (
       <Void {...this.props}>{element}</Void>
     ) : (
       element

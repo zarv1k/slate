@@ -2,9 +2,17 @@ import { Editor } from 'slate-react'
 import { Value } from 'slate'
 
 import React from 'react'
-import initialValue from './value.json'
+import initialValueAsJson from './value.json'
 import styled from 'react-emotion'
 import { Icon, Toolbar } from '../components'
+
+/**
+ * Deserialize the initial editor value.
+ *
+ * @type {Object}
+ */
+
+const initialValue = Value.fromJSON(initialValueAsJson)
 
 /**
  * Some styled components for the search box.
@@ -36,16 +44,6 @@ const SearchInput = styled('input')`
 
 class SearchHighlighting extends React.Component {
   /**
-   * Deserialize the initial editor value.
-   *
-   * @type {Object}
-   */
-
-  state = {
-    value: Value.fromJSON(initialValue),
-  }
-
-  /**
    * The editor's schema.
    *
    * @type {Object}
@@ -57,6 +55,16 @@ class SearchHighlighting extends React.Component {
         isAtomic: true,
       },
     },
+  }
+
+  /**
+   * Store a reference to the `editor`.
+   *
+   * @param {Editor} editor
+   */
+
+  ref = editor => {
+    this.editor = editor
   }
 
   /**
@@ -80,9 +88,9 @@ class SearchHighlighting extends React.Component {
         </Toolbar>
         <Editor
           placeholder="Enter some rich text..."
-          value={this.state.value}
+          ref={this.ref}
+          defaultValue={initialValue}
           schema={this.schema}
-          onChange={this.onChange}
           renderMark={this.renderMark}
           spellCheck
         />
@@ -97,7 +105,7 @@ class SearchHighlighting extends React.Component {
    * @return {Element}
    */
 
-  renderMark = props => {
+  renderMark = (props, editor, next) => {
     const { children, mark, attributes } = props
 
     switch (mark.type) {
@@ -107,17 +115,9 @@ class SearchHighlighting extends React.Component {
             {children}
           </span>
         )
+      default:
+        return next()
     }
-  }
-
-  /**
-   * On change, save the new `value`.
-   *
-   * @param {Change} change
-   */
-
-  onChange = ({ value }) => {
-    this.setState({ value })
   }
 
   /**
@@ -127,7 +127,8 @@ class SearchHighlighting extends React.Component {
    */
 
   onInputChange = event => {
-    const { value } = this.state
+    const { editor } = this
+    const { value } = editor
     const string = event.target.value
     const texts = value.document.getTexts()
     const decorations = []
@@ -150,16 +151,11 @@ class SearchHighlighting extends React.Component {
       })
     })
 
-    // Setting the `save` option to false prevents this change from being added
-    // to the undo/redo stack and clearing the redo stack if the user has undone
-    // changes.
-    const change = value
-      .change()
-      .setOperationFlag('save', false)
-      .setValue({ decorations })
-      .setOperationFlag('save', true)
-
-    this.onChange(change)
+    // Make the change to decorations without saving it into the undo history,
+    // so that there isn't a confusing behavior when undoing.
+    editor.withoutSaving(() => {
+      editor.setDecorations(decorations)
+    })
   }
 }
 
