@@ -1,3 +1,5 @@
+import { Editor } from 'slate'
+
 /**
  * Checks is selection at initial position: it is collapsed and is before the first character of the first text node
  *
@@ -57,19 +59,21 @@ export const insertFocusedSelectionTagMarkers = (value, options) => {
     tags = isForward ? ['focus', 'anchor'] : ['anchor', 'focus']
   }
 
-  const change = value.change()
+  const editor = new Editor({ value })
 
-  change.call(ch =>
-    tags.forEach(tag => {
-      const { path, offset } = selection[tag] || anchor
-      ch.insertTextByPath(path, offset, `${open}${tag}${close}`)
-    })
-  )
+  editor.withoutSaving(() => {
+    editor.command(e =>
+      tags.forEach(tag => {
+        const { path, offset } = selection[tag] || anchor
+        e.insertTextByPath(path, offset, `${open}${tag}${close}`)
+      })
+    )
+  })
 
   // selectionMarker in options saved only for internal usage
   options.selectionMarker = open
 
-  return change.value
+  return editor.value
 }
 
 /**

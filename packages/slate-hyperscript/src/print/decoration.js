@@ -1,3 +1,5 @@
+import { Editor } from 'slate'
+
 /**
  * Checks is mark type is decoration in real
  *
@@ -28,17 +30,17 @@ export const getModelType = model =>
  */
 
 export const applyDecorationMarks = value => {
-  const change = value.change()
+  const editor = new Editor({ value })
 
   value.decorations.forEach(decoration => {
-    change.addMarkAtRange(
-      decoration,
-      {
-        ...decoration.mark.toJSON(),
-        type: `__@${decoration.mark.type}@__`,
-      },
-      { normalize: false }
-    )
+    editor.withoutSaving(() => {
+      editor.withoutNormalizing(() => {
+        editor.addMarkAtRange(decoration, {
+          ...decoration.mark.toJSON(),
+          type: `__@${decoration.mark.type}@__`,
+        })
+      })
+    })
   })
-  return change.value
+  return editor.value
 }
