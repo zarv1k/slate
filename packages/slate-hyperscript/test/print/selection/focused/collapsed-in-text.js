@@ -5,7 +5,9 @@ import h from '../../../helpers/h'
 const input = (
   <value>
     <document>
-      <paragraph />
+      <paragraph>
+        <text />
+      </paragraph>
       <paragraph>
         Hel<cursor />lo, world!
       </paragraph>

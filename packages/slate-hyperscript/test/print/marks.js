@@ -6,9 +6,9 @@ const input = (
   <value>
     <document>
       <paragraph>
-        <bold>Hello</bold> I am{' '}
+        <bold>Hello</bold> I am <bold>using bold </bold>
         <bold>
-          using bold <italic> and italic</italic>
+          <italic> and italic</italic>
         </bold>
         <italic> and just italic</italic>.
       </paragraph>

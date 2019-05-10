@@ -9,7 +9,9 @@ const options = {
 const input = (
   <value>
     <document>
-      <paragraph />
+      <paragraph>
+        <text />
+      </paragraph>
       <paragraph>
         <anchor />
       </paragraph>

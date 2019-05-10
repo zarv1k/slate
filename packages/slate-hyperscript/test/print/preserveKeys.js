@@ -17,11 +17,12 @@ const input = (
         <link key="c" src="source">
           <text key="g">Some link</text>
         </link>
-        <text key="d">
-          Hello <bold>there</bold>
+        <text key="d">Hello </text>
+        <text key="e">
+          <bold>there</bold>
         </text>
       </paragraph>
-      <image key="e" src="image.png" />
+      <image key="f" src="image.png" />
     </document>
   </value>
 )
@@ -30,20 +31,16 @@ const output = `
 <value>
   <document key="a">
     <paragraph key="b">
-      <text key="6" />
       <link key="c" src="source">
         <text key="g">Some link</text>
       </link>
-      <text key="d">
-        Hello <bold>there</bold>
+      <text key="d">Hello </text>
+      <text key="e">
+        <bold>there</bold>
       </text>
     </paragraph>
-    <image key="e" src="image.png" />
+    <image key="f" src="image.png" />
   </document>
-  <selection>
-    <anchor key="g" />
-    <focus key="g" />
-  </selection>
 </value>
 `
 

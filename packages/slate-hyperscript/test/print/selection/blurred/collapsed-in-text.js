@@ -2,10 +2,14 @@
 
 import h from '../../../helpers/h'
 
+const options = { strict: true }
+
 const input = (
   <value>
     <document>
-      <paragraph />
+      <paragraph>
+        <text />
+      </paragraph>
       <paragraph>Hello, world!</paragraph>
     </document>
     <selection>
@@ -15,10 +19,14 @@ const input = (
   </value>
 )
 
+// console.log('selection', JSON.stringify(input.toJSON(options), null, 2))
+
 const output = `
 <value>
   <document>
-    <paragraph />
+    <paragraph>
+      <text />
+    </paragraph>
     <paragraph>Hello, world!</paragraph>
   </document>
   <selection>
@@ -28,4 +36,4 @@ const output = `
 </value>
 `
 
-export { input, output }
+export { input, output, options }

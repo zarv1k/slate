@@ -14,6 +14,19 @@ export const isSelectionAtStartOfDocument = ({ selection, document }) =>
   selection.anchor.isAtStartOfNode(document.getFirstText())
 
 /**
+ *
+ * Checks selection is set
+ * @param selection
+ * @returns {boolean}
+ */
+
+export const isSelectionSet = selection =>
+  selection.anchor &&
+  selection.anchor.isSet &&
+  selection.focus &&
+  selection.focus.isSet
+
+/**
  * Builds the open part of the selection marker text.
  * Ensures that selection markers will not cause issues in hyperprint output for documents that have already includes selection markers as real texts.
  * If document text contains open or close part of the selection marker, function appends '@' and tries to make open/close marker texts unique in the document.

@@ -8,6 +8,7 @@ import {
 import {
   isSelectionAtStartOfDocument,
   insertFocusedSelectionTagMarkers,
+  isSelectionSet,
 } from './selection'
 
 // All Tag parsers
@@ -16,7 +17,9 @@ const PARSERS = {
     const children = [
       ...parse(value.document, options),
       ...((value.selection.marks && value.selection.marks.size) ||
-      (value.selection.isBlurred && !isSelectionAtStartOfDocument(value))
+      (isSelectionSet(value.selection) &&
+        value.selection.isBlurred &&
+        !isSelectionAtStartOfDocument(value))
         ? PARSERS.selection(
             value.selection,
             options,

@@ -16,10 +16,12 @@ const input = (
       <paragraph>{'Should escape <, >, {, } properly'}</paragraph>
       <paragraph>{"Should escape \\'"}</paragraph>
       <paragraph>{space}</paragraph>
-      <paragraph should={'{"escape attributes"}'} />
-      <paragraph
-        should={{ escape: {}, object: ['etc.'], always: new Date(0) }}
-      />
+      <paragraph should={'{"escape attributes"}'}>
+        <text />
+      </paragraph>
+      <paragraph should={{ escape: {}, object: ['etc.'], always: new Date(0) }}>
+        <text />
+      </paragraph>
       <paragraph>
         <bold>{"Should escape'em \n\nline breaks."}</bold>
         {'\n'}
