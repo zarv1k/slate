@@ -1,6 +1,12 @@
 import invariant from 'tiny-invariant'
 import React from 'react'
 
+/*
+ * Instance counter to enable unique marks for multiple Placeholder instances.
+ */
+
+let instanceCounter = 0
+
 /**
  * A plugin that renders a React placeholder for a given Slate node.
  *
@@ -9,7 +15,13 @@ import React from 'react'
  */
 
 function SlateReactPlaceholder(options = {}) {
-  const { placeholder, when } = options
+  const instanceId = instanceCounter++
+  const placeholderMark = {
+    type: 'placeholder',
+    data: { key: instanceId },
+  }
+
+  const { placeholder, when, style = {} } = options
 
   invariant(
     placeholder,
@@ -36,12 +48,17 @@ function SlateReactPlaceholder(options = {}) {
     }
 
     const others = next()
+    const document = editor.value.document
     const first = node.getFirstText()
     const last = node.getLastText()
     const decoration = {
-      anchor: { key: first.key, offset: 0 },
-      focus: { key: last.key, offset: last.text.length },
-      mark: { type: 'placeholder' },
+      anchor: { key: first.key, offset: 0, path: document.getPath(first.key) },
+      focus: {
+        key: last.key,
+        offset: last.text.length,
+        path: document.getPath(last.key),
+      },
+      mark: placeholderMark,
     }
 
     return [...others, decoration]
@@ -59,19 +76,20 @@ function SlateReactPlaceholder(options = {}) {
   function renderMark(props, editor, next) {
     const { children, mark } = props
 
-    if (mark.type === 'placeholder') {
-      const style = {
+    if (mark.type === 'placeholder' && mark.data.get('key') === instanceId) {
+      const placeHolderStyle = {
         pointerEvents: 'none',
         display: 'inline-block',
         width: '0',
         maxWidth: '100%',
         whiteSpace: 'nowrap',
         opacity: '0.333',
+        ...style,
       }
 
       return (
         <span>
-          <span contentEditable={false} style={style}>
+          <span contentEditable={false} style={placeHolderStyle}>
             {placeholder}
           </span>
           {children}

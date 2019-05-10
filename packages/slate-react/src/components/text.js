@@ -1,11 +1,10 @@
 import Debug from 'debug'
 import ImmutableTypes from 'react-immutable-proptypes'
+import Leaf from './leaf'
+import { PathUtils } from 'slate'
 import React from 'react'
 import SlateTypes from 'slate-prop-types'
 import Types from 'prop-types'
-import { PathUtils } from 'slate'
-
-import Leaf from './leaf'
 
 /**
  * Debug.
@@ -77,14 +76,14 @@ class Text extends React.Component {
     // changed, but it's properties will be exactly the same (eg. copy-paste)
     // which this won't catch. But that's rare and not a drag on performance, so
     // for simplicity we just let them through.
-    if (n.node != p.node) return true
+    if (n.node !== p.node) return true
 
     // If the node parent is a block node, and it was the last child of the
     // block, re-render to cleanup extra `\n`.
-    if (n.parent.object == 'block') {
+    if (n.parent.object === 'block') {
       const pLast = p.parent.nodes.last()
       const nLast = n.parent.nodes.last()
-      if (p.node == pLast && n.node != nLast) return true
+      if (p.node === pLast && n.node !== nLast) return true
     }
 
     // Re-render if the current decorations have changed.
@@ -117,12 +116,15 @@ class Text extends React.Component {
       // Otherwise, if the decoration is in a single node, it's not ours.
       if (start.key === end.key) return false
 
-      // If the node's path is before the start path, ignore it.
       const path = document.assertPath(key)
-      if (PathUtils.compare(path, start.path) === -1) return false
+      const startPath = start.path || document.assertPath(start.key)
+      const endPath = end.path || document.assertPath(end.key)
+
+      // If the node's path is before the start path, ignore it.
+      if (PathUtils.compare(path, startPath) === -1) return false
 
       // If the node's path is after the end path, ignore it.
-      if (PathUtils.compare(path, end.path) === 1) return false
+      if (PathUtils.compare(path, endPath) === 1) return false
 
       // Otherwise, include it.
       return true
