@@ -1,6 +1,7 @@
 import assert from 'assert'
 import { Value } from 'slate'
 import { fixtures } from 'slate-dev-test-utils'
+import hyperprint from '../src/print'
 
 describe('slate-hyperscript', () => {
   fixtures(__dirname, 'fixtures', ({ module }) => {
@@ -8,6 +9,14 @@ describe('slate-hyperscript', () => {
     const actual = input.toJSON(options)
     const expected = Value.isValue(output) ? output.toJSON() : output
     assert.deepEqual(actual, expected)
+  })
+
+  fixtures(__dirname, 'print', ({ module }) => {
+    const { input, output, options } = module
+    const actual = hyperprint(input, options)
+    const expected = output.trim()
+
+    assert.equal(actual, expected)
   })
 
   fixtures.skip(__dirname, 'decorations', ({ module }) => {

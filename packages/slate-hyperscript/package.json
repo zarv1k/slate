@@ -13,7 +13,9 @@
     "lib/"
   ],
   "dependencies": {
-    "is-plain-object": "^2.0.4"
+    "is-plain-object": "^2.0.4",
+    "prettier": "1.13.6",
+    "stringify-object": "^3.2.2"
   },
   "peerDependencies": {
     "slate": ">=0.46.0"
